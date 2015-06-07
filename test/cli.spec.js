@@ -10,8 +10,8 @@ describe('CLI:', function() {
     assert.doesNotThrow(function() { execSync(command + ' set bar 1') });
   });
 
-  it('should cannot set no value', function() {
-    assert.throws(function() { execSync(command + ' set bar') });
+  it('should set value from pipe', function() {
+    assert.doesNotThrow(function() { execSync('echo 1 | ' + command + ' set bar') });
   });
 
   it('should get value', function() {

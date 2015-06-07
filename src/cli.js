@@ -3,32 +3,43 @@ var packages = require('../package.json');
 var program = require('commander');
 var store = require('./index.js').default;
  
+program.version(packages.version)
 program
-  .version(packages.version)
-  .command('set <key> <value>', 'store to value')
-  .command('get <key>', 'get value from store')
-  .command('delete <key>', 'delete value from store')
-  .action(function (command, key, value) {
-    if (store[command] === undefined) {
-      console.error("is not support command `" + command + "`.");
-      process.exit(1);
-    }
-    if (command === 'set') {
-      if (value == program) {
-        console.error("please set a key and value.");
+  .command('set <key> [<value>]')
+  .description('store to value')
+  .action(function set(key, value) {
+    if (value === undefined) {
+      var endListener = function() {
         process.exit(1);
-      }
-      try {
-        value = JSON.parse(value);
-      } catch (e) {}
+      };
+      process.stdin.resume();  
+      process.stdin.setEncoding('utf8');  
+      process.stdin.on('data', function(data) {
+        process.stdin.removeListener('end', endListener);
+        set(key, data);
+      });
+      process.stdin.on('end', endListener);
+      return;
     }
-    var result = store[command](key, value);
+    try {
+      value = JSON.parse(value);
+    } catch (e) {
 
-    if (command === 'get') {
-      console.log(JSON.stringify(result));
     }
+    store.set(key, value);
+  });
+program
+  .command('get <key>')
+  .description('get value from store')
+  .action(function get(key) {
+    console.log(JSON.stringify(store.get(key)));
+  });
 
-    process.exit(0);
+program
+  .command('delete <key>')
+  .description('delete value from store')
+  .action(function (key) {
+    store.delete(key);
   });
 
 program.parse(process.argv);
