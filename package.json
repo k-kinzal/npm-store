@@ -1,0 +1,46 @@
+{
+  "name": "@k-kinzal/store",
+  "version": "1.0.0",
+  "description": "Simple store of npm project",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-dir lib  --source-maps-inline",
+    "watch": "babel src --out-dir lib --watch --source-maps-inline",
+    "test": "npm run build && mocha --require intelli-espower-loader test/*.spec.js"
+  },
+  "bin": {
+    "store": "lib/cli.js"
+  },
+  "files": ["lib"],
+  "engines" : { "node" : "~0.12" },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k-kinzal/npm-store.git"
+  },
+  "keywords": [
+    "npm",
+    "cli",
+    "store",
+    "storage"
+  ],
+  "author": "k-kinzal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/k-kinzal/npm-store/issues"
+  },
+  "homepage": "https://github.com/k-kinzal/npm-store",
+  "dependencies": {
+    "commander": "^2.8.1",
+    "glob": "^5.0.10",
+    "lodash": "^3.9.3",
+    "shell-escape": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel": "^5.5.4",
+    "espower-loader": "^0.11.0",
+    "intelli-espower-loader": "^0.7.0",
+    "mocha": "^2.2.5",
+    "power-assert": "^0.11.0",
+    "source-map-support": "^0.3.1"
+  }
+}
