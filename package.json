@@ -11,8 +11,12 @@
   "bin": {
     "store": "lib/cli.js"
   },
-  "files": ["lib"],
-  "engines" : { "node" : "~0.12" },
+  "files": [
+    "lib"
+  ],
+  "engines": {
+    "node": "~0.12"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/k-kinzal/npm-store.git"
@@ -30,17 +34,17 @@
   },
   "homepage": "https://github.com/k-kinzal/npm-store",
   "dependencies": {
-    "commander": "^2.8.1",
-    "glob": "^5.0.10",
-    "lodash": "^3.9.3",
+    "commander": "^2.9.0",
+    "glob": "^5.0.15",
+    "lodash": "^3.10.1",
     "shell-escape": "^0.2.0"
   },
   "devDependencies": {
     "babel": "^5.5.4",
     "espower-loader": "^0.11.0",
     "intelli-espower-loader": "^0.7.0",
-    "mocha": "^2.2.5",
+    "mocha": "^2.3.3",
     "power-assert": "^0.11.0",
-    "source-map-support": "^0.3.1"
+    "source-map-support": "^0.3.3"
   }
 }
