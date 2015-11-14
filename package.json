@@ -2,7 +2,7 @@
   "name": "@k-kinzal/store",
   "version": "1.1.0",
   "description": "Simple store of npm project",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib  --source-maps-inline",
     "watch": "babel src --out-dir lib --watch --source-maps-inline",
