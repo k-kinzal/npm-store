@@ -50,7 +50,7 @@ export class ProjectStore extends Store {
     return super.get(this.convertKey(key));
   }
   delete(key) {
-    super.get(this.convertKey(key));
+    super.delete(this.convertKey(key));
   }
 }
 
